@@ -24,7 +24,9 @@ let count = processed.length + 1
 linksToDownload.forEach(link => {
   console.log('requesting:', link)
   // TODO: pad count if < 10
-  const fileName = path.resolve(outDir, `${count++}.webm`)
+  var countStr = count < 10 ? '0' + count : '' + count
+  count++;
+  const fileName = path.resolve(outDir, `${countStr}.webm`)
   const fileStream = fs.createWriteStream(fileName)
   request(link).pipe(fileStream)
   fileStream.on('finish', () => {
