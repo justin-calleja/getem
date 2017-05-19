@@ -3,10 +3,10 @@ const fs = require('fs')
 const path = require('path')
 const takeLinks = require('./takeLinks')
 
-const outDir = path.resolve(__dirname, '../out')
+const outDir = path.join(process.cwd(), 'out')
 const processedFilePath = path.resolve(outDir, 'processed')
 
-const linksStr = fs.readFileSync(path.resolve(__dirname, '../links'), 'utf-8')
+const linksStr = fs.readFileSync(path.join(process.cwd(), 'links'), 'utf-8')
 const processedStr = fs.readFileSync(processedFilePath, 'utf-8')
 
 const links = linksStr.split('\n').filter(x => x !== '')
